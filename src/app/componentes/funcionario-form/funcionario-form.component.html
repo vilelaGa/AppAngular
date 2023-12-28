@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">
+
+        <h4>Cadastro de Funcionario</h4>
+
+        <form [formGroup]="FuncionarioForm" (ngSubmit)="submit()" #formDit="ngForm">
+            <input type="text" placeholder="nome" formControlName="nome" required><br>
+            <input type="text" placeholder="sobrenome" formControlName="sobrenome" required><br>
+
+            <select required formControlName="departamento">
+                <option selected>Departamento</option>
+                <option value="RH">RH</option>
+                <option value="Financeiro">Financeiro</option>
+                <option value="Compras">Compras</option>
+                <option value="Atendimento">Atendimento</option>
+                <option value="Zeladoria">Zeladoria</option>
+            </select><br>
+
+            <select required formControlName="turno">
+                <option selected>Turno</option>
+                <option value="Manha">Manha</option>
+                <option value="Tarde">Tarde</option>
+                <option value="Noite">Noite</option>
+            </select><br>
+
+            <button type="submit">Cadastrar</button>
+            <button routerLink="/">Voltar</button>
+        </form>
+
+    </div>
+</div>

@@ -3,11 +3,11 @@
     <div class="container">
 
         <div class="row">
-            <button>Cadastrar novo funcionario</button>
+            <button routerLink="/cadastro">Cadastrar novo funcionario</button>
         </div>
 
         <div class="row-select">
-            <input type="search">
+            <input type="search" (input)="search($event)">
         </div>
 
         <div class="row-tables">
@@ -15,8 +15,6 @@
                 <thead>
                     <tr>
                         <th>
-                            <img src="assets/images/Ativo.png" width="25">
-                            <img src="assets/images/Inativo.png" width="25">
                         </th>
                         <th>Nome</th>
                         <th>SobreNome</th>
@@ -25,11 +23,22 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let linha of funcionarios">
                     <tr>
-                        <td>Gabriel</td>
-                        <td>Vilela</td>
-                        <td>TI</td>
+                        <td>
+                            <div *ngIf="linha.ativo == true else inativo">
+                                <img src="assets/images/Ativo.png" width="25">
+                            </div>
+
+                            <ng-template #inativo>
+                                <img src="assets/images/Inativo.png" width="25">
+                            </ng-template>
+
+
+                        </td>
+                        <td>{{ linha.nome }}</td>
+                        <td>{{ linha.sobrenome }}</td>
+                        <td>{{ linha.departamento }}</td>
                         <td>
                             <button>Editar</button>
                             <button>Detalhes</button>
